@@ -21,7 +21,7 @@
               :nested-dirs (name-to-path main-ns)
               :sanitized (sanitize (project-name name))
               :year (year)}]
-    (main/info "Generating a project called " name "based on the 'om-start' template")
+    (main/info "Generating a project called " name "based on the 'om-start' template (modified by boz)")
     (main/info "To see other templates (app, lein plugin, etc), try `lein help new`.")
     (->files data
              [".gitignore" (render "gitignore" data)]
