@@ -25,6 +25,7 @@
     (main/info "To see other templates (app, lein plugin, etc), try `lein help new`.")
     (->files data
              [".gitignore" (render "gitignore" data)]
+             [".projectile" (render "projectile" data)]
              ["README.md" (render "README.md" data)]
              ["doc/intro.md" (render "intro.md" data)]
              ["LICENSE" (render "LICENSE" data)]
