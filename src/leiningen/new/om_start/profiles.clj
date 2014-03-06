@@ -12,7 +12,9 @@
         :source-paths ["dev-resources/tools/http" "dev-resources/tools/repl"]
         :dependencies [[ring "1.2.1"]
                        [compojure "1.1.6"]
-                       [enlive "1.1.5"]]
+                       [enlive "1.1.5"]
+                       [fogus/ring-edn "0.2.0"]
+                       [com.datomic/datomic-free "0.9.4532"]]
         :plugins [[com.cemerick/austin "0.1.4"]]
         :cljsbuild
         {:builds {:{{name}}
