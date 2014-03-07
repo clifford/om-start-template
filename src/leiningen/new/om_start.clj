@@ -4,7 +4,7 @@
                                              multi-segment
                                              sanitize-ns
                                              project-name
-                                             name-to-path 
+                                             name-to-path
                                              year
                                              sanitize
                                              ->files]]
@@ -14,7 +14,8 @@
   "A lein template for creating nREPL compliant OM project"
   [name]
   (let [render (renderer "om-start")
-        main-ns (multi-segment (sanitize-ns name))
+        ;; main-ns (multi-segment (sanitize-ns name))
+        main-ns (sanitize-ns name)
         data {:raw-name name
               :name (project-name name)
               :namespace main-ns
@@ -33,4 +34,8 @@
              ["dev-resources/public/index.html" (render "index.html" data)]
              ["dev-resources/tools/http/ring/server.clj" (render "server.clj" data)]
              ["dev-resources/tools/repl/brepl/connect.cljs" (render "connect.cljs" data)]
-             ["src/cljs/{{nested-dirs}}.cljs" (render "core.cljs" data)])))
+             ["dev-resources/tools/datomic/util.clj" (render "util.clj" data)]
+             ["src/cljs/{{nested-dirs}}/core.cljs" (render "core.cljs" data)]
+             ["src/clj/{{nested-dirs}}/core.clj" (render "core.clj" data)]
+             ["src/clj/{{nested-dirs}}/util.clj" (render "util.clj" data)]
+)))
