@@ -14,7 +14,7 @@
                        [compojure "1.1.6"]
                        [enlive "1.1.5"]
                        [fogus/ring-edn "0.2.0"]
-                       [com.datomic/datomic-free "0.9.4532"]]
+                       [com.datomic/datomic-free "0.9.4578"]]
         :plugins [[com.cemerick/austin "0.1.4"]]
         :cljsbuild
         {:builds {:{{name}}
