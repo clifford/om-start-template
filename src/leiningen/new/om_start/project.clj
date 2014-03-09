@@ -27,9 +27,9 @@
             {:source-paths ["src/clj" "src/cljs"]
              :compiler
              {:output-to "dev-resources/public/js/{{sanitized}}.js"
-              :output-dir "dev-resources/public/js/out"
+              :output-dir "dev-resources/public/js/"
               :optimizations :whitespace
-              :source-map true
+              :source-map "dev-resources/public/js/{{sanitized}}.js"
               :pretty-print true}}}})
 
 ;; combination of :whitespace and :pretty-print true will use the Google Closure compiler and will not require any changes to the html file when you switch it to :advanced mode. Also, it consolidates all .cljs files into a single .js file specified by :output-to, therefore no need for the :output-dir. :output-dir only needed when using :none mode, as files are then 1-to-1 between .cljs and .js and are written to the :output-dir
