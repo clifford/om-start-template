@@ -1,4 +1,4 @@
-(ns {{namespace}}.core
+(ns om-datomic.core
   (:require [ring.util.response :refer [file-response]]
             [ring.adapter.jetty :refer [run-jetty]]
             [ring.middleware.edn :refer [wrap-edn-params]]
@@ -7,11 +7,11 @@
             [compojure.handler :as handler]
             [datomic.api :as d]))
 
-(def uri "datomic:free://localhost:4334/om_async")
+(def uri "datomic:free://localhost:4334/om_datomic")
 (def conn (d/connect uri))
 
 (defn index []
-  (file-response "public/html/index.html" {:root "resources"}))
+  (file-response "public/html/index.html" {:root "dev-resources"}))
 
 (defn generate-response [data & [status]]
   {:status (or status 200)
@@ -40,17 +40,19 @@
                  db)))]
     (generate-response classes)))
 
-(defroutes routes
-  (GET "/" [] (index))
-  (GET "/classes" [] (classes))
-  (PUT "/class/:id/update"
-    {params :params edn-params :edn-params}
-    (update-class (:id params) edn-params))
-  (route/files "/" {:root "resources/public"}))
+;; (defroutes routes
+;;   (GET "/" [] (index))
+;;   (GET "/classes" [] (classes))
+;;   (PUT "/class/:id/update"
+;;     {params :params edn-params :edn-params}
+;;     (update-class (:id params) edn-params))
+;;   (route/files "/" {:root "dev-resources/public"}))
 
-(def app
-  (-> routes
-      wrap-edn-params))
 
-(defonce server
-  (run-jetty #'app {:port 8080 :join? false}))
+
+;; (def app
+;;   (-> routes
+;;       wrap-edn-params))
+
+;; (defonce server
+;;   (run-jetty #'app {:port 8080 :join? false}))
