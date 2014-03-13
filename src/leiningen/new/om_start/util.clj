@@ -1,10 +1,11 @@
 (ns {{namespace}}.util
+(ns {{namespace}}.util
   (:require [datomic.api :as d]
             [clojure.java.io :as io]
             [clojure.edn :as edn])
   (:import datomic.Util))
 
-(def uri "datomic:free://localhost:4334/om_async")
+(def uri "datomic:free://localhost:4334/om_datomic")
 
 (defn read-all [f]
   (Util/readAll (io/reader f)))
